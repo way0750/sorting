@@ -14,7 +14,7 @@
 */
 
 function sample (arr) {
-  var index = Math.floor((Math.random()*length));
+  var index = Math.floor((Math.random()*arr.length));
   return arr[index];
 }
 

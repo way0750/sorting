@@ -13,7 +13,39 @@
   less:[12 15] equal: [21] greater: [35] -> [12 15 21 35]
 */
 
+function sample (arr) {
+  var index = Math.floor((Math.random()*length));
+  return arr[index];
+}
+
+
 function quickSort (unsortedArray) {
-  // fill in
-  return sortedArray;
-};
+  //should stop if array is less than 2 length long;
+  if (unsortedArray.length<2){return unsortedArray;}
+
+  //create the brackets to store items
+  var small, equal, bigger, compItem;
+  small = [];
+  equal = [];
+  bigger = [];
+  compItem = sample(unsortedArray);
+
+
+  //loop and compare all items in unsortedArray
+  unsortedArray.forEach(function(item){
+    if (item > compItem){
+      bigger.push(item);
+    } else if(item === compItem){
+      equal.push(item);
+    } else {
+      small.push(item);
+    }
+  });
+
+  //recursive sort here:
+  small = quickSort(small);
+  bigger = quickSort(bigger);
+
+  return small.concat(equal, bigger);
+
+}
